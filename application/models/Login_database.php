@@ -28,11 +28,13 @@
     public function login($data) {
 
       $condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $data['password'] . "'";
+      //get data from DB
       $this->db->select('*');
       $this->db->from('user_login');
       $this->db->where($condition);
       $this->db->limit(1);
-      $query = $this->db->get();
+
+      $query = $this->db->get();//eksekusi query
 
       if ($query->num_rows() == 1) {
         return true;
@@ -45,14 +47,15 @@
     public function read_user_information($username) {
 
       $condition = "user_name =" . "'" . $username . "'";
+
       $this->db->select('*');
       $this->db->from('user_login');
       $this->db->where($condition);
       $this->db->limit(1);
-      $query = $this->db->get();
+      $query = $this->db->get();//eksekusi query
 
       if ($query->num_rows() == 1) {
-        return $query->result();
+        return $query->result(); //menddapatkan value dari query berupa array
       } else {
         return false;
       }
