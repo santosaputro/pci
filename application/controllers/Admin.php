@@ -50,7 +50,7 @@
 
             // Add user data in session
             $this->session->set_userdata('logged_in', $session_data);
-            //menampilkan halaman addmin
+            //menampilkan halaman admin
             $this->load->view('admin_page');
           }
         } else {
